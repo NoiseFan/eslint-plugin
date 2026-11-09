@@ -1,0 +1,12 @@
+{
+  "no-ref/invalid.js": [
+    {
+      "ruleId": "noisefan/no-ref",
+      "message": "Usage of ref() is restricted. Use shallowRef() or deepRef() instead."
+    },
+    {
+      "ruleId": "noisefan/no-ref",
+      "message": "Usage of readonly() is restricted. Use shallowReadonly() or deepReadonly() instead."
+    }
+  ]
+}

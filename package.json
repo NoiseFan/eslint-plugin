@@ -1,0 +1,83 @@
+{
+  "name": "@noisefan/eslint-plugin",
+  "type": "module",
+  "version": "0.1.0",
+  "packageManager": "pnpm@11.24.0",
+  "description": "Personal ESLint rules by noisefan for JavaScript, TypeScript, Vue, HTML, and stylesheets.",
+  "author": "noisefan <https://github.com/noisefan>",
+  "license": "MIT",
+  "homepage": "https://github.com/noisefan/eslint-plugin#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noisefan/eslint-plugin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/noisefan/eslint-plugin/issues"
+  },
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "noisefan",
+    "vue",
+    "typescript",
+    "antfu"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/index.d.mts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": "^20.19.0 || ^22.13.0 || >=24"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "pnpm run lint --fix",
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit",
+    "prepack": "pnpm run build",
+    "test:cov": "vitest --coverage",
+    "test:fixtures": "vitest run tests/fixtures.test.ts",
+    "check": "pnpm lint && pnpm typecheck && pnpm test --run && pnpm build && pnpm exec publint",
+    "release": "pnpm check && bumpp",
+    "publish:ci": "node --import tsx scripts/publish.ts",
+    "prepare": "simple-git-hooks"
+  },
+  "peerDependencies": {
+    "eslint": "^9.0.0 || ^10.0.0"
+  },
+  "dependencies": {
+    "vue-eslint-parser": "^10.4.1"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^9.5.1",
+    "@types/node": "^26.6.3",
+    "@vitest/coverage-v8": "5.0.2",
+    "bumpp": "12.3.0",
+    "eslint": "10.11.0",
+    "lint-staged": "17.6.0",
+    "publint": "^0.3.0",
+    "simple-git-hooks": "2.14.0",
+    "tsdown": "^0.23.0",
+    "tsx": "4.23.15",
+    "typescript": "~6.0.3",
+    "vitest": "5.0.2"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,mjs,ts,md,yml,yaml,json,json5}": [
+      "eslint --cache --fix"
+    ]
+  }
+}
