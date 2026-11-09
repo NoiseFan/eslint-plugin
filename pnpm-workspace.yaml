@@ -6,4 +6,5 @@ trustPolicyIgnoreAfter: 10080 # 7 days
 shellEmulator: true
 
 allowBuilds:
+  esbuild: true
   simple-git-hooks: true
