@@ -46,7 +46,7 @@
     "typecheck": "tsc --noEmit",
     "prepack": "pnpm run build",
     "test:cov": "vitest --coverage",
-    "publish:ci": "node --import tsx scripts/publish.ts",
+    "release": "tsx scripts/publish.ts",
     "prepare": "simple-git-hooks"
   },
   "peerDependencies": {
