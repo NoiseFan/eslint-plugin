@@ -46,9 +46,6 @@
     "typecheck": "tsc --noEmit",
     "prepack": "pnpm run build",
     "test:cov": "vitest --coverage",
-    "test:fixtures": "vitest run tests/fixtures.test.ts",
-    "check": "pnpm lint && pnpm typecheck && pnpm test --run && pnpm build && pnpm exec publint",
-    "release": "pnpm check && bumpp",
     "publish:ci": "node --import tsx scripts/publish.ts",
     "prepare": "simple-git-hooks"
   },

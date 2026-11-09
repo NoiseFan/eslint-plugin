@@ -2,64 +2,95 @@ name: CI
 
 on:
   push:
-    branches: ['**']
+    branches:
+      - main
   pull_request:
+    branches:
+      - main
 
 permissions:
   contents: read
-
-concurrency:
-  group: ci-${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  id-token: write
 
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+
       - name: Install pnpm
         uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6
-      - name: Set up Node.js
+
+      - name: Set node
         uses: actions/setup-node@v7
         with:
-          node-version: 24
+          node-version: lts/*
           cache: pnpm
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm lint
 
-  build:
+      - name: Setup
+        run: npm i -g @antfu/ni
+
+      - name: Install
+        run: nci
+
+      - name: Lint
+        run: nr lint
+
+  pr-release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+
       - name: Install pnpm
         uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6
-      - name: Set up Node.js
+
+      - name: Set node
         uses: actions/setup-node@v7
         with:
-          node-version: 24
+          node-version: lts/*
           cache: pnpm
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm typecheck
-      - run: pnpm build
-      - run: pnpm exec publint
-      - run: pnpm publish:ci --dry-run
+
+      - name: Setup
+        run: npm i -g @antfu/ni
+
+      - name: Install
+        run: nci
+
+      - name: Typecheck
+        run: nr typecheck
+
+      - name: Build
+        run: nr build
 
   test:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v7
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
       - name: Install pnpm
         uses: pnpm/action-setup@0977fd99725f1db4007ccb2928dbb4e90d06cc86 # v6
-      - name: Set up Node.js
+
+      - name: Use Node.js lts/*
         uses: actions/setup-node@v7
         with:
-          node-version: 24
+          node-version: lts/*
           cache: pnpm
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm test:cov --run
-      - name: Upload coverage report
-        uses: actions/upload-artifact@v4
+
+      - name: Setup
+        run: npm i -g @antfu/ni
+
+      - name: Install
+        run: nci
+
+      - name: Unit tests
+        run: nr test:cov
+
+      - name: Report coverage
+        uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7
         with:
-          name: coverage-report
-          path: coverage/clover.xml
-          if-no-files-found: error
+          use_oidc: true
+          files: ./coverage/clover.xml
+          fail_ci_if_error: true
+          verbose: true
