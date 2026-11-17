@@ -1,6 +1,6 @@
 import type { Rule as ESLintRule } from 'eslint'
 import type { AST } from 'vue-eslint-parser'
-import type { AttributeGap, DocumentParserServices, HtmlAttributeNewlineOptions } from '../types'
+import type { AttributeGap, DocumentParserServices, HtmlAttributeNewlineOptions } from '@/types'
 
 const newlinePattern = /[\r\n]/
 const indentPattern = /^[\t ]*/
