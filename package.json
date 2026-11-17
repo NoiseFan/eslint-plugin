@@ -1,7 +1,7 @@
 {
   "name": "@noisefan/eslint-plugin",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "packageManager": "pnpm@11.24.0",
   "description": "Personal ESLint rules by noisefan for JavaScript, TypeScript, Vue, HTML, and stylesheets.",
   "author": "noisefan <https://github.com/noisefan>",
