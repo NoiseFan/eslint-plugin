@@ -9,3 +9,5 @@ dist
 tests/_fixtures-*
 coverage
 .claude
+
+typegen.d.ts

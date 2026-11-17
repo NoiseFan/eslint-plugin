@@ -51,11 +51,11 @@ jobs:
       - name: Install
         run: nci
 
-      - name: Typecheck
-        run: nr typecheck
-
       - name: Build
         run: nr build
+
+      - name: Typecheck
+        run: nr typecheck
 
   test:
     runs-on: ubuntu-latest
