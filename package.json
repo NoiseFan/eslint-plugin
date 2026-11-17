@@ -48,7 +48,6 @@
     "prepack": "pnpm run build",
     "test:cov": "vitest --coverage",
     "release": "tsx scripts/release.ts",
-    "prepublishOnly": "pnpm run build",
     "prepare": "simple-git-hooks"
   },
   "peerDependencies": {
