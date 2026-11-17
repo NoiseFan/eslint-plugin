@@ -1,4 +1,12 @@
-# @noisefan/eslint-plugin
+<h1 align="center">@noisefan/eslint-plugin</h1>
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/@noisefan/eslint-plugin"><img src="https://img.shields.io/npm/v/@noisefan/eslint-plugin" alt="npm version"></a>
+  <a href="https://www.npmjs.com/package/@noisefan/eslint-plugin"><img src="https://img.shields.io/npm/dm/@noisefan/eslint-plugin" alt="npm downloads"></a>
+  <a href="https://codecov.io/gh/noisefan/eslint-plugin?branch=main">
+    <img src="https://codecov.io/gh/noisefan/eslint-plugin/graph/badge.svg?branch=main" alt="codecov">
+  </a>
+</p>
 
 noisefan 的个人 ESLint 规则集合，配合 `@antfu/eslint-config` 使用。支持 ESLint 9 / 10 的 flat config，仅提供 ESM。
 
