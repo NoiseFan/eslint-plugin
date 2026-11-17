@@ -4,7 +4,7 @@ dist
 *.log
 .DS_Store
 .eslintcache
-
+.pnpm-store
 *.tgz
 tests/_fixtures-*
 coverage
