@@ -10,4 +10,4 @@ tests/_fixtures-*
 coverage
 .claude
 
-typegen.d
+typegen.d.ts
