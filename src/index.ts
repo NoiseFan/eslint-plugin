@@ -82,5 +82,6 @@ const all: Linter.Config[] = [
 noisefan.configs.all = all
 
 export { all }
+export type { RuleOptions } from './typegen'
 export type { NoisefanPlugin } from './types'
 export default noisefan
